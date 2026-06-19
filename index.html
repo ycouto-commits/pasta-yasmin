@@ -1,1 +1,114 @@
+---
 
+### 📂 Raiz do Projeto / `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Climático: Urbano vs. Rural</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <header>
+        <h1>Análise Climática</h1>
+        <p>Entendendo as diferenças do microclima entre as cidades e o campo</p>
+    </header>
+
+    <div class="container">
+        
+        <section class="intro">
+            <h2>O Impacto da Ação Humana no Clima Local</h2>
+            <p>A substituição da cobertura vegetal natural por construções altera drasticamente a forma como a superfície do planeta interage com a radiação solar e com o ciclo da água. Essa modificação cria dinâmicas meteorológicas muito distintas entre os centros urbanos e as regiões rurais.</p>
+        </section>
+
+        <div class="climas-grid">
+            
+            <article class="card urbano">
+                <h2><span class="icon">🌆</span> Clima Urbano</h2>
+                <p>As cidades criam um microclima artificial próprio devido à alta densidade de edifícios, asfalto e atividades industriais.</p>
+                <ul>
+                    <li><strong>Ilhas de Calor:</strong> Estruturas de concreto e asfalto retêm o calor do sol ao longo do dia e o liberam lentamente à noite.</li>
+                    <li><strong>Baixa Umidade:</strong> A impermeabilização do solo impede a absorção da água, reduzindo a evaporação local.</li>
+                    <li><strong>Poluição do Ar:</strong> Gases de escapamentos geram uma "cúpula" que aprisiona o calor.</li>
+                    <li><strong>Barreiras de Vento:</strong> Prédios altos bloqueiam e desviam as correntes de ar naturais.</li>
+                </ul>
+            </article>
+
+            <article class="card rural">
+                <h2><span class="icon">🏡</span> Clima Rural</h2>
+                <p>As áreas rurais preservam as condições naturais do ambiente, permitindo um equilíbrio térmico e hidrológico muito maior.</p>
+                <ul>
+                    <li><strong>Temperaturas Amenas:</strong> A presença de vegetação ajuda a refletir e dissipar a radiação solar de forma eficiente.</li>
+                    <li><strong>Alta Evapotranspiração:</strong> As plantas liberam vapor de água, mantendo o ar úmido e fresco.</li>
+                    <li><strong>Solo Permeável:</strong> A água da chuva infiltra-se facilmente na terra, alimentando lençóis freáticos.</li>
+                    <li><strong>Circulação Livre:</strong> A ausência de barreiras arquitetônicas permite que as brisas circulem livremente.</li>
+                </ul>
+            </article>
+
+        </div>
+
+        <section class="tabela-secao">
+            <h2>Resumo Comparativo</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fator Climático</th>
+                        <th>Área Urbana 🌆</th>
+                        <th>Área Rural 🏡</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Temperatura Média</strong></td>
+                        <td>Elevada (Fenômeno Ilha de Calor)</td>
+                        <td>Mais baixa e equilibrada</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Umidade Relativa</strong></td>
+                        <td>Mais baixa (menor evaporação)</td>
+                        <td>Mais alta (alta evapotranspiração)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Qualidade do Ar</strong></td>
+                        <td>Comprometida por gases e poeira</td>
+                        <td>Mais limpa, com maior oxigenação</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Escoamento da Água</strong></td>
+                        <td>Rápido na superfície (Risco de enchentes)</td>
+                        <td>Lento com alta absorção pelo solo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="intro monitor-secao">
+            <h2>🔮 Monitor de Clima Mundial</h2>
+            <p style="margin-bottom: 1rem;">Veja como está o tempo real e a previsão em qualquer parte do globo!</p>
+            <div class="busca-container">
+                <input type="text" id="cidade-input" placeholder="Digite uma cidade... (Ex: Curitiba, Tokyo)">
+                <button id="buscar-btn">Consultar</button>
+            </div>
+
+            <div id="clima-tempo-real">
+                <p>Digite um local acima para monitorar o clima em tempo real.</p>
+            </div>
+
+            <h3 style="color: #00569d; margin-top: 1.5rem;">Próximos Dias</h3>
+            <div id="previsao-dias">
+                </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Projeto de Estudo Climático | Desenvolvido por <a href="#">Seu Usuário do GitHub</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

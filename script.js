@@ -38,14 +38,15 @@ async function executarBuscaClimatica() {
         const respostaAtual = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${API_KEY}&units=metric&lang=${LANG}`);
         const dadosAtuais = await respostaAtual.json();
 
-        // Busca a previsão para 5 dias
-        const respostaPrevisao = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${API_KEY}&units=metric&lang=${LANG}`);
-        const dadosPrevisao = await respostaPrevisao.json();
-
-        if (dadosAtuais.cod !== 200) {
+        // VALIDAÇÃO IMEDIATA: Verifica se a cidade foi encontrada na primeira API
+        if (Number(dadosAtuais.cod) !== 200) {
             alert("Cidade não encontrada. Tente reescrever o nome corretamente.");
             return;
         }
+
+        // Busca a previsão para 5 dias (só faz se a cidade realmente existir)
+        const respostaPrevisao = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${API_KEY}&units=metric&lang=${LANG}`);
+        const dadosPrevisao = await respostaPrevisao.json();
 
         atualizarInterfaceInterface(dadosAtuais, dadosPrevisao);
 
@@ -77,7 +78,9 @@ function atualizarInterfaceInterface(atual, previsao) {
         // A API retorna dados de 3 em 3 horas. Pulamos de 8 em 8 registros para capturar 1 amostra por dia (24h).
         for (let i = 0; i < previsao.list.length; i += 8) {
             const dia = previsao.list[i];
-            const dataObjeto = new Date(dia.dt_txt);
+            
+            // CORREÇÃO: Substitui o espaço por 'T' para evitar bugs de data em navegadores como o Safari
+            const dataObjeto = new Date(dia.dt_txt.replace(" ", "T"));
             const dataFormatada = dataObjeto.toLocaleDateString('pt-BR', { weekday: 'short', day: 'numeric' });
 
             containerPrevisao.innerHTML += `
@@ -145,7 +148,7 @@ function criarSolzinhoVerao() {
 }
 
 function criarFolhasOutono() {
-    const quantidadeFolhas = 8; // Reduzido um pouco para manter a janela limpa e usável
+    const quantidadeFolhas = 8; 
     const emojisFolhas = ['🍂', '🍁', '🍃'];
 
     for (let i = 0; i < quantidadeFolhas; i++) {
@@ -154,7 +157,7 @@ function criarFolhasOutono() {
         folha.innerHTML = emojisFolhas[Math.floor(Math.random() * emojisFolhas.length)];
         
         folha.style.position = 'fixed';
-        folha.style.bottom = `${Math.random() * 30 + 65}px`; // Acumulam um pouco acima da taskbar do rodapé
+        folha.style.bottom = `${Math.random() * 30 + 65}px`; 
         folha.style.left = `${Math.random() * 92}%`;
         folha.style.fontSize = `${Math.random() * 1 + 1.5}rem`;
         folha.style.zIndex = '9999';
